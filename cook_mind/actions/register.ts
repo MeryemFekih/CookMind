@@ -24,7 +24,6 @@ export async function register(formData: FormData) {
     return { success: false, message: "Tous les champs sont obligatoires." };
   }
 
-  // Step 1 — create auth user
   const { data, error } = await supabase.auth.signUp({ email, password });
 
   if (error || !data.user) {
@@ -34,7 +33,6 @@ export async function register(formData: FormData) {
 
   console.log("✅ Auth user created:", data.user.id);
 
-  // Step 2 — calculate calories
   const BMR = gender === "male"
     ? 88.36 + 13.4 * weight_kg + 4.8 * height_cm - 5.7 * age
     : 447.6 + 9.2 * weight_kg + 3.1 * height_cm - 4.3 * age;
@@ -54,7 +52,6 @@ export async function register(formData: FormData) {
     TDEE
   );
 
-  // Step 3 — upsert with admin client (bypasses RLS completely)
   const { error: profileError } = await supabaseAdmin
     .from("profiles")
     .upsert({

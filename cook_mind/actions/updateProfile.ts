@@ -4,7 +4,6 @@ import { createSupabaseServerClient } from "@/supabase/server";
 import supabaseAdmin from "@/supabase/admin";
 
 export async function updateProfile(formData: FormData) {
-  // ✅ use SSR client instead of singleton
   const supabase = await createSupabaseServerClient();
   const { data: { user }, error: authError } = await supabase.auth.getUser();
 

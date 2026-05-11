@@ -8,7 +8,6 @@ export default async function Home() {
   return (
     <div className="min-h-screen bg-[#f8faf6] font-sans">
 
-      {/* Navbar */}
       <nav className="flex items-center justify-between px-8 py-5 bg-white/80 backdrop-blur border-b border-gray-100 sticky top-0 z-20">
         <div className="flex items-center gap-2">
           <span className="text-2xl">🧠</span>
@@ -35,7 +34,6 @@ export default async function Home() {
         </div>
       </nav>
 
-      {/* Hero */}
       <section className="max-w-5xl mx-auto px-6 pt-24 pb-20 text-center">
         <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 text-green-700 text-xs font-semibold px-4 py-1.5 rounded-full mb-8">
           <span className="w-1.5 h-1.5 bg-green-500 rounded-full" />
@@ -61,7 +59,6 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Feature cards */}
       <section className="max-w-5xl mx-auto px-6 pb-24">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           <FeatureCard
@@ -103,7 +100,6 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* How it works */}
       <section className="bg-white border-y border-gray-100 py-20">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-3xl font-black text-gray-900 mb-3">Comment ça marche ?</h2>
@@ -128,7 +124,6 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* CTA bottom */}
       <section className="max-w-3xl mx-auto px-6 py-24 text-center">
         <h2 className="text-4xl font-black text-gray-900 mb-4">
           Prêt à manger plus intelligemment ?
@@ -142,7 +137,6 @@ export default async function Home() {
         </Link>
       </section>
 
-      {/* Footer */}
       <footer className="border-t border-gray-100 py-8 text-center text-xs text-gray-300">
         <span className="font-bold text-gray-400">🧠 CookMind</span> · Projet EEMI 2026 · Propulsé par OpenAI
       </footer>

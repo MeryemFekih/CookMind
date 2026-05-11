@@ -79,7 +79,6 @@ export default function ProfilClient({ profile }: { profile: Profile }) {
   return (
     <div className="min-h-screen bg-gray-50">
 
-      {/* Navbar */}
       <nav className="bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between sticky top-0 z-10 shadow-sm">
         <div className="flex items-center gap-2">
           <span className="text-xl">🧠</span>
@@ -101,14 +100,12 @@ export default function ProfilClient({ profile }: { profile: Profile }) {
           </p>
         </div>
 
-        {/* Success */}
         {success && (
           <div className="bg-green-50 border border-green-200 text-green-700 rounded-xl px-4 py-3 text-sm mb-6">
             ✅ Profil mis à jour avec succès !
           </div>
         )}
 
-        {/* Error */}
         {error && (
           <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm mb-6">
             {error}
@@ -117,7 +114,6 @@ export default function ProfilClient({ profile }: { profile: Profile }) {
 
         <form onSubmit={handleUpdate} className="space-y-6">
 
-          {/* Identity */}
           <Section title="Informations générales">
             <Field label="Nom d'utilisateur" name="username" type="text"
               defaultValue={profile.username} required />
@@ -132,7 +128,6 @@ export default function ProfilClient({ profile }: { profile: Profile }) {
             </div>
           </Section>
 
-          {/* Physical */}
           <Section title="Données physiques">
             <div className="grid grid-cols-2 gap-3">
               <Field label="Taille (cm)" name="height_cm" type="number"
@@ -151,7 +146,6 @@ export default function ProfilClient({ profile }: { profile: Profile }) {
               ]} />
           </Section>
 
-          {/* Goals */}
           <Section title="Objectifs & régime">
             <Select label="Objectif" name="objective"
               defaultValue={profile.objective} required
@@ -171,7 +165,6 @@ export default function ProfilClient({ profile }: { profile: Profile }) {
               ]} />
           </Section>
 
-          {/* Intolerances */}
           <Section title="Intolérances alimentaires">
             <div className="grid grid-cols-2 gap-2">
               {INTOLERANCES.map((item) => (
@@ -192,7 +185,6 @@ export default function ProfilClient({ profile }: { profile: Profile }) {
             </div>
           </Section>
 
-          {/* Calories preview */}
           <div className="bg-orange-50 border border-orange-100 rounded-2xl p-4 flex items-center justify-between">
             <div>
               <p className="text-xs text-orange-400 font-medium">Calories journalières actuelles</p>
@@ -201,7 +193,6 @@ export default function ProfilClient({ profile }: { profile: Profile }) {
             <span className="text-3xl">🔥</span>
           </div>
 
-          {/* Save button */}
           <button
             type="submit"
             disabled={loading}

@@ -19,17 +19,16 @@ const INTOLERANCES = [
 ];
 
 type FormState = {
-  // Step 0
   username: string;
   email: string;
   password: string;
-  // Step 1
+
   gender: string;
   age: string;
   height_cm: string;
   weight_kg: string;
   activity_level: string;
-  // Step 2
+
   objective: string;
   diet_type: string;
   intolerances: string[];
@@ -114,13 +113,11 @@ export default function Inscription() {
     <div className="min-h-screen bg-green-50 flex items-center justify-center px-4 py-10">
       <div className="bg-white rounded-3xl shadow-xl w-full max-w-lg p-10">
 
-        {/* Header */}
         <div className="text-center mb-8">
           <h1 className="text-2xl font-bold text-green-700 tracking-tight">🍴 CookMind</h1>
           <p className="text-sm text-gray-400 mt-1">Créez votre compte personnalisé</p>
         </div>
 
-        {/* Step indicator */}
         <div className="flex items-start justify-between mb-8">
           {steps.map((label, i) => (
             <div key={label} className="flex flex-col items-center flex-1 relative">
@@ -140,14 +137,12 @@ export default function Inscription() {
           ))}
         </div>
 
-        {/* Error */}
         {error && (
           <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm mb-5">
             {error}
           </div>
         )}
 
-        {/* Step 0 — Account */}
         {step === 0 && (
           <div className="space-y-4">
             <Field label="Nom d'utilisateur" placeholder="john_doe"
@@ -159,7 +154,6 @@ export default function Inscription() {
           </div>
         )}
 
-        {/* Step 1 — Physical */}
         {step === 1 && (
           <div className="space-y-4">
             <div className="grid grid-cols-2 gap-3">
@@ -189,7 +183,6 @@ export default function Inscription() {
           </div>
         )}
 
-        {/* Step 2 — Goals */}
         {step === 2 && (
           <div className="space-y-4">
             <Select label="Objectif principal" value={form.objective}
@@ -237,7 +230,6 @@ export default function Inscription() {
           </div>
         )}
 
-        {/* Navigation */}
         <div className="flex gap-3 mt-8">
           {step > 0 && (
             <button
@@ -269,11 +261,7 @@ export default function Inscription() {
   );
 }
 
-function Field({ label, type = "text", placeholder, value, onChange, min, max, step }: {
-  label: string; type?: string; placeholder?: string;
-  value: string; onChange: (v: string) => void;
-  min?: string; max?: string; step?: string;
-}) {
+function Field({ label, type = "text", placeholder, value, onChange, min, max, step }: {label: string; type?: string; placeholder?: string; value: string; onChange: (v: string) => void; min?: string; max?: string; step?: string;}) {
   return (
     <div>
       <label className="block text-sm font-semibold text-gray-700 mb-1">{label}</label>

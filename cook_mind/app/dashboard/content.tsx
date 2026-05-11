@@ -67,7 +67,6 @@ export default function DashboardClient({ profile, recipes }: {
   return (
     <div className="min-h-screen bg-gray-50 font-sans">
 
-      {/* Navbar */}
       <nav className="bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between sticky top-0 z-10 shadow-sm">
         <div className="flex items-center gap-2">
           <span className="text-xl">🍴</span>
@@ -91,7 +90,6 @@ export default function DashboardClient({ profile, recipes }: {
 
       <div className="max-w-5xl mx-auto px-6 py-10">
 
-        {/* Welcome */}
         <div className="mb-10">
           <h1 className="text-3xl font-bold text-gray-800">
             Bonjour, <span className="text-green-600">{profile.username}</span> 👋
@@ -99,7 +97,6 @@ export default function DashboardClient({ profile, recipes }: {
           <p className="text-gray-400 mt-1 text-sm">Voici votre tableau de bord nutritionnel</p>
         </div>
 
-        {/* Stats cards */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
           <StatCard
             icon="🔥"
@@ -131,10 +128,8 @@ export default function DashboardClient({ profile, recipes }: {
           />
         </div>
 
-        {/* Profile summary + intolerances */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10">
 
-          {/* Body stats */}
           <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
             <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">
               Mes données
@@ -151,7 +146,6 @@ export default function DashboardClient({ profile, recipes }: {
             </Link>
           </div>
 
-          {/* Diet */}
           <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
             <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">
               Mon régime
@@ -177,7 +171,6 @@ export default function DashboardClient({ profile, recipes }: {
             </div>
           </div>
 
-          {/* Macros estimate */}
           <div className="bg-white rounded-2xl border border-gray-100 p-6 shadow-sm">
             <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4">
               Macros estimés / jour
@@ -203,7 +196,6 @@ export default function DashboardClient({ profile, recipes }: {
           </div>
         </div>
 
-        {/* Recipes list */}
         <div className="bg-white rounded-2xl border border-gray-100 shadow-sm p-6">
           <div className="flex items-center justify-between mb-6">
             <h2 className="text-base font-bold text-gray-800">Mes recettes</h2>
@@ -254,9 +246,7 @@ export default function DashboardClient({ profile, recipes }: {
   );
 }
 
-function StatCard({ icon, label, value, color, textColor }: {
-  icon: string; label: string; value: string; color: string; textColor: string;
-}) {
+function StatCard({ icon, label, value, color, textColor }: {icon: string; label: string; value: string; color: string; textColor: string;}) {
   return (
     <div className={`rounded-2xl border p-5 ${color}`}>
       <div className="text-2xl mb-2">{icon}</div>
@@ -275,9 +265,7 @@ function Row({ label, value }: { label: string; value: string }) {
   );
 }
 
-function MacroBar({ label, grams, color, percent }: {
-  label: string; grams: number; color: string; percent: number;
-}) {
+function MacroBar({ label, grams, color, percent }: {label: string; grams: number; color: string; percent: number;}) {
   return (
     <div className="mb-3">
       <div className="flex justify-between text-xs mb-1">
