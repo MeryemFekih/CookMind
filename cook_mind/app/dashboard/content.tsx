@@ -145,7 +145,7 @@ export default function DashboardClient({ profile, recipes }: {
               <Row label="Poids" value={`${profile.weight_kg} kg`} />
               <Row label="Genre" value={profile.gender === "male" ? "Homme" : "Femme"} />
             </div>
-            <Link href="/profil"
+            <Link href="/profile"
               className="mt-5 block text-center text-xs text-green-600 font-semibold hover:underline">
               Modifier mon profil →
             </Link>

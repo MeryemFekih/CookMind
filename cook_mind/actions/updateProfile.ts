@@ -1,11 +1,17 @@
 "use server";
 
-import supabase from "@/supabase/client";
+import { createSupabaseServerClient } from "@/supabase/server";
 import supabaseAdmin from "@/supabase/admin";
 
-export async function register(formData: FormData) {
-  const email = formData.get("email") as string;
-  const password = formData.get("password") as string;
+export async function updateProfile(formData: FormData) {
+  // ✅ use SSR client instead of singleton
+  const supabase = await createSupabaseServerClient();
+  const { data: { user }, error: authError } = await supabase.auth.getUser();
+
+  if (authError || !user) {
+    return { success: false, message: "Non authentifié." };
+  }
+
   const username = formData.get("username") as string;
   const gender = formData.get("gender") as string;
   const age = parseInt(formData.get("age") as string);
@@ -16,25 +22,10 @@ export async function register(formData: FormData) {
   const diet_type = formData.get("diet_type") as string;
   const intolerances = formData.getAll("intolerances").join(",");
 
-  console.log("📋 Received:", { email, username, gender, age, height_cm, weight_kg, activity_level, objective, diet_type, intolerances });
-
-  if (!email || !password || !username || !gender || !age || !height_cm || !weight_kg || !activity_level || !objective || !diet_type) {
-    const missing = { email, password, username, gender, age, height_cm, weight_kg, activity_level, objective, diet_type };
-    console.error("❌ Missing:", Object.entries(missing).filter(([, v]) => !v).map(([k]) => k));
+  if (!username || !gender || !age || !height_cm || !weight_kg || !activity_level || !objective || !diet_type) {
     return { success: false, message: "Tous les champs sont obligatoires." };
   }
 
-  // Step 1 — create auth user
-  const { data, error } = await supabase.auth.signUp({ email, password });
-
-  if (error || !data.user) {
-    console.error("❌ SignUp error:", error);
-    return { success: false, message: error?.message ?? "Erreur création compte." };
-  }
-
-  console.log("✅ Auth user created:", data.user.id);
-
-  // Step 2 — calculate calories
   const BMR = gender === "male"
     ? 88.36 + 13.4 * weight_kg + 4.8 * height_cm - 5.7 * age
     : 447.6 + 9.2 * weight_kg + 3.1 * height_cm - 4.3 * age;
@@ -54,11 +45,9 @@ export async function register(formData: FormData) {
     TDEE
   );
 
-  // Step 3 — upsert with admin client (bypasses RLS completely)
-  const { error: profileError } = await supabaseAdmin
+  const { error } = await supabaseAdmin
     .from("profiles")
-    .upsert({
-      id: data.user.id,
+    .update({
       username,
       gender,
       age,
@@ -70,13 +59,13 @@ export async function register(formData: FormData) {
       intolerances,
       daily_calories_target,
       updated_at: new Date().toISOString(),
-    });
+    })
+    .eq("id", user.id);
 
-  if (profileError) {
-    console.error("❌ Upsert error:", profileError);
-    return { success: false, message: "Erreur profil: " + profileError.message };
+  if (error) {
+    console.error("❌ Update error:", error);
+    return { success: false, message: "Erreur mise à jour: " + error.message };
   }
 
-  console.log("✅ Profile saved!");
   return { success: true };
 }
