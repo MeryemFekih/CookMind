@@ -73,7 +73,7 @@ export default function DashboardClient({ profile, recipes }: {
           <span className="text-lg font-bold text-green-700 tracking-tight">CookMind</span>
         </div>
         <div className="flex items-center gap-4">
-          <Link href="/profil"
+          <Link href="/profile"
             className="text-sm text-gray-500 hover:text-green-600 font-medium transition-colors">
             Mon profil
           </Link>
