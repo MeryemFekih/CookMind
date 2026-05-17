@@ -42,20 +42,25 @@ export default function RecipeContent({ initialRecipes }: ContentProps) {
   return (
     <div className="min-h-screen bg-gray-50 font-sans">
       
-      {/* --- NAVBAR : COPIE EXACTE DE TON DASHBOARD --- */}
       <nav className="bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between sticky top-0 z-10 shadow-sm">
         <div className="flex items-center gap-2">
-          <span className="text-xl">🍴</span>
-          <span className="text-lg font-bold text-green-700 tracking-tight">CookMind</span>
+          <span className="text-xl">🧠</span>
+          <span className="text-lg font-black text-gray-900 tracking-tight">
+            Cook<span className="text-green-600">Mind</span>
+          </span>
         </div>
         <div className="flex items-center gap-4">
+          <Link href="/recettes"
+            className="text-sm text-gray-500 hover:text-green-600 font-medium transition-colors">
+            Toutes les recettes
+          </Link>
+          <Link href="/dashboard"
+            className="text-sm text-gray-500 hover:text-green-600 font-medium transition-colors">
+            Dashboard
+          </Link>
           <Link href="/profil"
             className="text-sm text-gray-500 hover:text-green-600 font-medium transition-colors">
             Mon profil
-          </Link>
-          <Link href="/dashboard"
-            className="bg-green-600 hover:bg-green-700 text-white text-sm font-semibold px-4 py-2 rounded-xl transition-colors">
-            Tableau de bord
           </Link>
           <button onClick={handleLogout}
             className="text-sm text-gray-400 hover:text-red-500 transition-colors">

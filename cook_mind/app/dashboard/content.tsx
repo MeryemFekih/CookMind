@@ -69,11 +69,22 @@ export default function DashboardClient({ profile, recipes }: {
 
       <nav className="bg-white border-b border-gray-100 px-6 py-4 flex items-center justify-between sticky top-0 z-10 shadow-sm">
         <div className="flex items-center gap-2">
-          <span className="text-xl">🍴</span>
-          <span className="text-lg font-bold text-green-700 tracking-tight">CookMind</span>
+          <span className="text-xl">🧠</span>
+          <span className="text-lg font-black text-gray-900 tracking-tight">
+            Cook<span className="text-green-600">Mind</span>
+          </span>
         </div>
         <div className="flex items-center gap-4">
-          <Link href="/profile"
+          
+          <Link href="/recettes"
+            className="text-sm text-gray-500 hover:text-green-600 font-medium transition-colors">
+            Toutes les recettes
+          </Link>
+          <Link href="/courses"
+            className="text-sm text-gray-500 hover:text-green-600 font-medium transition-colors">
+            🛒 Courses
+          </Link>
+          <Link href="/profil"
             className="text-sm text-gray-500 hover:text-green-600 font-medium transition-colors">
             Mon profil
           </Link>
